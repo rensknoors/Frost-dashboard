@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Frost Dashboard",
+  "description": "Replace the new tab page with the latest cryptocurrency prices and other useable utilities.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Click to view Coda dashboard"
+  },
+  "background": {
+    "scripts": ["dist/js/background.js"]
+  },
+  "permissions": [
+    "management",
+    "http://fonts.googleapis.com/",
+    "https://fonts.googleapis.com/"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "dist/newtab.html"
+  }
+}
