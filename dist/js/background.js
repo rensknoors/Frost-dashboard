@@ -3,6 +3,6 @@
 
 chrome.browserAction.onClicked.addListener(function(activeTab)
 {
-    var newURL = "dist/newtab.html";
+    var newURL = "newtab.html";
     chrome.tabs.create({ url: newURL });
 });

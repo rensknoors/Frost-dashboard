@@ -1,8 +1,10 @@
 /* Fonts */
 $ff-main: 'Hind', sans-serif;
-$fs-small: 14px;
-$fs-medium: 18px;
-$fs-large: 32px;
+$fs-s: 14px;
+$fs-m: 18px;
+$fs-l: 36px;
+$fs-xl: 72px;
+$fs-xxl: 128px;
 
 
 /* Standaard kleuren */
@@ -10,6 +12,7 @@ $white: #fff;
 $black: #000;
 $grey-1: #333;
 $grey-2: #999;
+$grey-3: #ddd;
 $blue: #3e53f4;
 $red: #ce4444;
 $green: #20cc68;
