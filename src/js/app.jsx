@@ -6,9 +6,15 @@ import Tracker from './components/tracker.jsx';
 ReactDOM.render(
   (
   <div id="time">
-    <Clock name="Rens" />
-    <Tracker />
+    <Clock />
   </div>
   ),
-  document.getElementById('root')
+  document.getElementById('t-root')
+);
+
+ReactDOM.render(
+  (
+    <Tracker />
+  ),
+  document.getElementById('c-root')
 );

@@ -24,83 +24,22 @@
         <div id="app">
             <div class="crypto panel">
                 <div id="market-info">
-                    <div>
-                        <span class="bold">Market Cap:</span> $429.576.140.161</span>
+                    <p>
+                        <span class="bold">Market Cap:</span> $429.576.140.161
                         <span class="bold">BTC dominance:</span> 38%
-                    </div>
+                    </p>
                 </div>
 
                 <input type="text" class="search" placeholder="Search cryptocurrency...">
 
-                <div class="ticker-container">
-                    <div class="ticker">
-                        <div class="rank">1</div>
-                        <img src="img/icons/svg/color/btc.svg" alt="" class="crypto-icon">
-                        Bitcoin
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">2</div>
-                        <img src="img/icons/svg/color/eth.svg" alt="" class="crypto-icon">
-                        Ethereum
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">3</div>
-                        <img src="img/icons/svg/color/xrp.svg" alt="" class="crypto-icon">
-                        Ripple
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">4</div>
-                        <img src="img/icons/svg/color/bch.svg" alt="" class="crypto-icon">
-                        Bcash
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">5</div>
-                        <img src="img/icons/svg/color/ltc.svg" alt="" class="crypto-icon">
-                        Litecoin
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">6</div>
-                        <img src="img/icons/svg/color/ada.svg" alt="" class="crypto-icon">
-                        Cardano
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">7</div>
-                        <img src="img/icons/svg/color/neo.svg" alt="" class="crypto-icon">
-                        NEO
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">8</div>
-                        <img src="img/icons/svg/color/xlm.svg" alt="" class="crypto-icon">
-                        Stellar
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">9</div>
-                        <img src="img/icons/svg/color/eos.svg" alt="" class="crypto-icon">
-                        EOS
-                    </div>
-                    
-                    <div class="ticker">
-                        <div class="rank">10</div>
-                        <img src="img/icons/svg/color/miota.svg" alt="" class="crypto-icon">
-                        IOTA
-                    </div>
-                </div>
+                <div class="ticker-container" id="c-root"></div>
             </div>
     
-            <div class="time panel" id="root">
+            <div class="time panel" id="t-root">
 
             </div>
         </div>
 
         <script src="js/bundle.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>
