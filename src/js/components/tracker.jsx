@@ -24,14 +24,14 @@ export default class Tracker extends React.Component {
 
   render() {
     return (
-      <div class="ticker-container">
+      <div className="ticker-container">
         { this.state.currencies.slice(0, 10).map(coin => 
             (
-              <div class="ticker">
-                <div class="rank">{coin.rank}</div>
-                <img src={"img/icons/svg/color/"+ coin.symbol+".svg"} alt={coin.name} class="crypto-icon" />
-                <div class="coin-name">{coin.name} <small class="sub-text">({coin.symbol})</small></div>
-                <div class="coin-val">{coin.price_usd}</div>
+              <div className="ticker" key={coin.id}>
+                <div className="rank">{coin.rank}</div>
+                <img src={"img/icons/svg/color/" + coin.symbol + ".svg"} alt={coin.name} className="crypto-icon" />
+                <div className="coin-name">{coin.name} <small className="sub-text">({coin.symbol})</small></div>
+                <div className="coin-val">{"$"+coin.price_usd.toFixed(2)}</div>
               </div>
             )
           )
