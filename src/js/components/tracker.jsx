@@ -31,7 +31,7 @@ export default class Tracker extends React.Component {
                 <div className="rank">{coin.rank}</div>
                 <img src={"img/icons/svg/color/" + coin.symbol + ".svg"} alt={coin.name} className="crypto-icon" />
                 <div className="coin-name">{coin.name} <small className="sub-text">({coin.symbol})</small></div>
-                <div className="coin-val">{"$"+coin.price_usd.toFixed(2)}</div>
+                <div className="coin-val">{"$" + Number(coin.price_usd).toFixed(2).toLocaleString()}</div>
               </div>
             )
           )
