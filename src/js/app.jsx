@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Clock from './components/clock.jsx';
-import Tracker from './components/tracker.jsx';
+import Ticker from './components/ticker.jsx';
 
 ReactDOM.render(
   (
@@ -14,7 +14,7 @@ ReactDOM.render(
 
 ReactDOM.render(
   (
-    <Tracker />
+    <Ticker />
   ),
   document.getElementById('c-root')
 );

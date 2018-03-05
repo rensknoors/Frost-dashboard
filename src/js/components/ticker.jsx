@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const cmc = 'https://api.coinmarketcap.com/v1/ticker/';
 
-export default class Tracker extends React.Component {
+export default class Ticker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,9 +29,11 @@ export default class Tracker extends React.Component {
             (
               <div className="ticker" key={coin.id}>
                 <div className="rank">{coin.rank}</div>
-                <img src={"img/icons/svg/color/" + coin.symbol + ".svg"} alt={coin.name} className="crypto-icon" />
-                <div className="coin-name">{coin.name} <small className="sub-text">({coin.symbol})</small></div>
-                <div className="coin-val">{"$" + Number(coin.price_usd).toFixed(2).toLocaleString()}</div>
+                <div className="coin-name">
+                  <img src={"img/icons/svg/color/" + coin.symbol + ".svg"} alt={coin.name} className="coin-icon" />
+                  <span>{coin.name} <small className="sub-text">({coin.symbol})</small></span>
+                </div>
+                <div className="coin-value">{"$" + Number(coin.price_usd).toFixed(2).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
               </div>
             )
           )
