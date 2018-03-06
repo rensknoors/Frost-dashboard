@@ -10,16 +10,25 @@ export default class Ticker extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
+      isPositive: false,
       currencies: []
     };
   }
 
-  componentDidMount() {
+  componentDidMount () {
     axios.get(cmc)
       .then(res => {
         const currencies = res.data;
         this.setState({ currencies });
       })
+  }
+
+  checkPriceChange (gains) {
+    if (gains >= 0) {
+      return " price-up";
+    } else {
+      return " price-down";
+    }
   }
 
   render() {
@@ -29,11 +38,20 @@ export default class Ticker extends React.Component {
             (
               <div className="ticker" key={coin.id}>
                 <div className="rank">{coin.rank}</div>
-                <div className="coin-name">
-                  <img src={"img/icons/svg/color/" + coin.symbol + ".svg"} alt={coin.name} className="coin-icon" />
-                  <span>{coin.name} <small className="sub-text">({coin.symbol})</small></span>
+                <div className={"coin-info" + this.checkPriceChange(coin.percent_change_24h)}>
+                  <div className="coin-name">
+                    <img src={"img/icons/svg/color/" + coin.symbol + ".svg"} alt={coin.name} className="coin-icon" />
+                    <span>{coin.name} <small className="sub-text">({coin.symbol})</small></span>
+                  </div>
+                  <div className="coin-value">
+                    <span className="coin-price">
+                      {"$" + Number(coin.price_usd).toFixed(2)}
+                    </span>
+                    <span className="coin-price-change">
+                      {Number(coin.percent_change_24h).toFixed(2)+"%"}
+                    </span>
+                  </div>
                 </div>
-                <div className="coin-value">{"$" + Number(coin.price_usd).toFixed(2).toLocaleString(undefined, {maximumFractionDigits:2})}</div>
               </div>
             )
           )
