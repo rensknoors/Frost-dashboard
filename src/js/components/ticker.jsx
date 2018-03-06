@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const cmc = 'https://api.coinmarketcap.com/v1/ticker/';
+const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=10';
 
 export default class Ticker extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export default class Ticker extends React.Component {
   render() {
     return (
       <div className="ticker-container">
-        { this.state.currencies.slice(0, 10).map(coin => 
+        { this.state.currencies.map(coin => 
             (
               <div className="ticker" key={coin.id}>
                 <div className="rank">{coin.rank}</div>
