@@ -23,6 +23,12 @@
 
         <div id="app">
             <div class="crypto panel">
+                <div id="select-mode">
+                    <div class="mode marketcap"></div>
+                    <div class="mode portfolio"></div>
+                    <div class="mode news"></div>
+                </div>
+
                 <div id="market-info">
                     <p>
                         <span class="bold">Market Cap:</span> $429.576.140.161
@@ -32,17 +38,7 @@
 
                 <input type="text" class="crypto-search" placeholder="Search cryptocurrency...">
 
-                <div id="c-root">
-                    <!-- <div className="ticker-container">
-                        <div className="ticker">
-                            <div className="rank"></div>
-                            <div className="coin-info">
-                                <div className="coin-name"></div>
-                                <div className="coin-value"></div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
+                <div id="c-root"></div>
             </div>
     
             <div class="time panel" id="t-root">
