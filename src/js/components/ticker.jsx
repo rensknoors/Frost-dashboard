@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import NumberFormat from 'react-number-format';
 import axios from 'axios';
 
-const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=';
+const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=100';
 
 export default class Ticker extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class Ticker extends React.Component {
       .then(res => {
         const currencies = res.data;
         this.setState({ currencies });
-      })
+      });
   }
 
   formatPercentage (percentage) {
@@ -55,11 +55,11 @@ export default class Ticker extends React.Component {
                   <div className="coin-value">
 
                       <NumberFormat value={coin.price_usd} displayType={'text'} prefix={'$'} isNumericString={true} decimalScale={2} decimalSeparator={','} thousandSeparator={'.'} renderText={value => <span className="coin-price">{value}</span>} />
-
                       <NumberFormat value={coin.percent_change_24h} prefix={this.formatPercentage(coin.percent_change_24h)} suffix={'%'} displayType={'text'} isNumericString={true} decimalScale={2} decimalSeparator={','} renderText={value => <span className="coin-price-change">{value}</span>} />
-                    <svg className="price-change-icon" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
-                      {this.chooseIcon(coin.percent_change_24h)}
-                    </svg>
+                      <svg className="price-change-icon" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
+                        {this.chooseIcon(coin.percent_change_24h)}
+                      </svg>
+
                   </div>
 
                 </div>

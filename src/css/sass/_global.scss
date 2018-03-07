@@ -18,7 +18,7 @@ body,
 .crypto::before {
     /* Linear gradient to create a darker background */
     // background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../img/bg-vert.jpg') no-repeat center center fixed;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://picsum.photos/2000/3000/') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://picsum.photos/1500/1500/') no-repeat center center fixed;
     /* 106% needed so blur covers entire screen */
     background-size: 106% auto;
 }
