@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class Clock extends React.Component {
   constructor (props) {
@@ -28,8 +27,8 @@ export default class Clock extends React.Component {
     return (
       <div>
         <h1>{this.state.date.toLocaleTimeString()}</h1>
-        {/* <h3>We're going to the &#127768;</h3> */}
-        <h3>PANIC! SELL, SELL, SELL! &#128059;</h3>
+        <h3>We're going to the &#127768;</h3>
+        {/* <h3>PANIC! SELL, SELL, SELL! &#128059;</h3> */}
       </div>
     );
   }

@@ -1,27 +1,50 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import NumberFormat from 'react-number-format';
 import axios from 'axios';
+import NumberFormat from 'react-number-format';
 
-const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=100';
+const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=500';
 
 export default class Ticker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
       currencies: []
     };
   }
-
-  componentDidMount () {
+  
+  getData () {
     axios.get(cmc)
       .then(res => {
         const currencies = res.data;
         this.setState({ currencies });
+        console.log(currencies);
       });
   }
+
+  componentWillMount () {
+    // console.log("Component will mount");
+  }
+  
+  componentDidMount () {
+    this.getData();
+    this.cryptoUpdate = setInterval(
+      () => this.getData(),
+      60000
+    );
+    // console.log('Component did mount');
+  }
+  
+  componentWillUpdate () {
+    // console.log("Component will update");
+  }
+  
+  componentDidUpdate () {
+    // console.log("Component did update");
+  }
+  
+  
+
 
   formatPercentage (percentage) {
     if (percentage >= 0) {
@@ -37,10 +60,14 @@ export default class Ticker extends React.Component {
     }
   }
 
+
+
+
   render() {
+    console.log(this.props);
     return (
       <div className="ticker-container">
-        { this.state.currencies.map(coin => 
+        { this.state.currencies.slice(0,100).map(coin => 
             (
               <div className="ticker" key={ coin.id }>
                 <div className="rank">{ coin.rank }</div>
