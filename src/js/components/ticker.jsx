@@ -9,7 +9,8 @@ export default class Ticker extends React.Component {
     super(props);
     this.state = {
       error: null,
-      currencies: []
+      currencies: [],
+      filteredCurrencies: []
     };
   }
   
@@ -18,12 +19,46 @@ export default class Ticker extends React.Component {
       .then(res => {
         const currencies = res.data;
         this.setState({ currencies });
-        console.log(currencies);
+        if (this.state.filteredCurrencies.length === 0) {
+          this.setState({ filteredCurrencies: currencies });
+        }
       });
   }
+  
+  formatPercentage (percentage) {
+    if (percentage >= 0) {
+      return "+";
+    }
+  }
+  
+  chooseIcon (percentage) {
+    if (percentage >= 0) {
+      return (<path fill="#00ff00" d="M18,16V14.5L12,8.5L6,14.5V16H18M12,11.33L14.67,14H9.33L12,11.33Z" />);
+    } else {
+      return (<path fill="#ff0000" d="M18,9V10.5L12,16.5L6,10.5V9H18M12,13.67L14.67,11H9.33L12,13.67Z" />);
+    }
+  }
 
+  defaultImg = (e) => {
+    e.target.src = "img/icons/svg/color/_unknown.svg";
+  }
+
+  filterResults(filter) {
+    filter.toLowerCase();
+    var filteredCurrencies = this.state.currencies.filter((coin) => {
+      if (coin.name.toLowerCase().includes(filter) || coin.symbol.toLowerCase().includes(filter) || coin.rank === filter) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    this.setState({ filteredCurrencies: filteredCurrencies });
+  }
+
+
+  
   componentWillMount () {
-    // console.log("Component will mount");
+    this.setState({ filteredCurrencies: this.state.currencies });
   }
   
   componentDidMount () {
@@ -32,49 +67,27 @@ export default class Ticker extends React.Component {
       () => this.getData(),
       60000
     );
-    // console.log('Component did mount');
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ searchTerm: nextProps.searchTerm });
+    this.filterResults(nextProps.searchTerm);
+  }
+
   
-  componentWillUpdate () {
-    // console.log("Component will update");
-  }
-  
-  componentDidUpdate () {
-    // console.log("Component did update");
-  }
-  
-  
-
-
-  formatPercentage (percentage) {
-    if (percentage >= 0) {
-      return "+";
-    }
-  }
-
-  chooseIcon (percentage) {
-    if (percentage >= 0) {
-    return (<path fill="#00ff00" d="M18,16V14.5L12,8.5L6,14.5V16H18M12,11.33L14.67,14H9.33L12,11.33Z" />);
-    } else {
-    return (<path fill="#ff0000" d="M18,9V10.5L12,16.5L6,10.5V9H18M12,13.67L14.67,11H9.33L12,13.67Z" />);
-    }
-  }
-
-
-
 
   render() {
-    console.log(this.props);
     return (
       <div className="ticker-container">
-        { this.state.currencies.slice(0,100).map(coin => 
+        {
+          this.state.filteredCurrencies.slice(0,100).map(coin => 
             (
               <div className="ticker" key={ coin.id }>
                 <div className="rank">{ coin.rank }</div>
                 <div className="coin-info">
 
                   <div className="coin-name">
-                    <img src={ "img/icons/svg/color/" + coin.symbol + ".svg" } alt={ coin.name } className="coin-icon" />
+                    <img src={ "img/icons/svg/color/" + coin.symbol + ".svg" } alt={ coin.name } className="coin-icon" onError={ this.defaultImg } />
                     <span>{ coin.name }</span>
                     <small className="sub-text">{ coin.symbol }</small>
                   </div>

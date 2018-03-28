@@ -11,14 +11,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ''
+      // searchTerm: null
     };
   }
 
-  filterCryto (searchTerm) {
-    console.log(searchTerm);
+  filterCryto = (filter) => {
+    this.setState({searchTerm: filter});
   }
 
+  
+  
   render () {
     return (
       <div className="container">
@@ -38,7 +40,7 @@ class App extends React.Component {
           </div>
   
           <div id="c-root">
-            <Ticker />
+            <Ticker searchTerm={ this.state.searchTerm } />
           </div>
         </div>
   
