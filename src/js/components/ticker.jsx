@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
-const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=500';
+const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=250';
 
 export default class Ticker extends React.Component {
   constructor(props) {

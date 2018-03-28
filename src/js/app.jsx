@@ -26,9 +26,9 @@ class App extends React.Component {
       <div className="container">
         <div className="crypto panel">
           <div id="select-mode">
-              <div className="mode marketcap"></div>
-              <div className="mode portfolio"></div>
-              <div className="mode news"></div>
+              <div className="mode marketcap" title="marketcap"></div>
+              <div className="mode watchlist" title="watchlist"></div>
+              <div className="mode news" title="news"></div>
           </div>
   
           <div id="market-info">

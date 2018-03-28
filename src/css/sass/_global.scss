@@ -66,15 +66,18 @@ body {
                         padding-top: 100%;
                         height: 50px;
                         border-radius: 0 5px 5px 0;
+                        position: relative;
                         cursor: pointer;
                         &.marketcap {
                             background: $black url('../img/icons/marketcap.svg') no-repeat center center / 30%;
                         }
-                        &.portfolio {
-                            background: $black url('../img/icons/portfolio.svg') no-repeat center center / 30%;
+                        &.watchlist {
+                            background: $black url('../img/icons/binoculars.svg') no-repeat center center / 30%;
                         }
                         &.news {
                             background: $black url('../img/icons/news.svg') no-repeat center center / 30%;
+                        }
+                        .span {
                         }
                     }
                 }
@@ -129,7 +132,7 @@ body {
                             overflow: hidden;
                             display: flex;
                             .rank {
-                                width: 28px;
+                                width: 36px;
                                 height: 100%;
                                 background: $white;
                                 color: $grey-1;
@@ -145,7 +148,7 @@ body {
                                 flex-direction: column;
                                 .coin-name {
                                     height: 50%;
-                                    padding: 5px;
+                                    padding: 8px;
                                     display: flex;
                                     align-items: center;
                                     background: rgba(255, 255, 255, 0.1);
@@ -162,8 +165,8 @@ body {
                                     }
                                 }
                                 .coin-value {
-                                    background: none;
                                     @extend .coin-name;
+                                    background: none;
                                     border-bottom: 0;
                                     .coin-price {
                                         width: 80%;
