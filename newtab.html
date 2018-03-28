@@ -10,9 +10,6 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
 
         <div id="app">
             <div class="crypto panel">
@@ -22,28 +19,16 @@
                     <div class="mode news"></div>
                 </div>
 
-                <div id="market-info">
-                    <!-- <p><span class="bold">Market Cap:</span> $429.576.140.161<span class="bold">BTC dominance:</span> 38%</p> -->
-                </div>
+                <div id="market-info"></div>
 
-                <input type="text" class="crypto-search" placeholder="Search cryptocurrency...">
+                <div id="search"></div>
 
                 <div id="c-root">
-                    <!-- <div className="ticker-container">
-                        <div className="ticker">
-                            <div className="rank"></div>
-                            <div className="coin-info">
-                                <div className="coin-name"></div>
-                                <div className="coin-value"></div>
-                            </div>
-                        </div>
-                    </div> -->
+                    <p>Loading...</p>
                 </div>
             </div>
     
-            <div class="time panel" id="t-root">
-
-            </div>
+            <div class="time panel" id="t-root"></div>
         </div>
 
         <script src="js/bundle.js"></script>
