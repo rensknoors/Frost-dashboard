@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import NumberFormat from 'react-number-format';
 
 import Clock from './components/clock.jsx';
-import Ticker from './components/ticker.jsx';
-import MarketInfo from './components/marketinfo.jsx';
+import CoinList from './components/coinList.jsx';
+import MarketInfo from './components/marketInfo.jsx';
 import SearchBar from './components/search.jsx';
 
 class App extends React.Component {
@@ -40,7 +39,7 @@ class App extends React.Component {
           </div>
   
           <div id="c-root">
-            <Ticker searchTerm={ this.state.searchTerm } />
+            <CoinList searchTerm={ this.state.searchTerm } />
           </div>
         </div>
   
