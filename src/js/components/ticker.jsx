@@ -1,28 +1,16 @@
 import React from 'react';
-import axios from 'axios';
 import NumberFormat from 'react-number-format';
-
-const cmc = 'https://api.coinmarketcap.com/v1/ticker/?limit=250';
 
 export default class Ticker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: null,
-      currencies: [],
-      filteredCurrencies: []
-    };
   }
-  
-  getData () {
-    axios.get(cmc)
-      .then(res => {
-        const currencies = res.data;
-        this.setState({ currencies });
-        if (this.state.filteredCurrencies.length === 0) {
-          this.setState({ filteredCurrencies: currencies });
-        }
-      });
+
+
+
+
+  defaultImg = (e) => {
+    e.target.src = "img/icons/svg/color/_unknown.svg";
   }
   
   formatPercentage (percentage) {
@@ -39,75 +27,64 @@ export default class Ticker extends React.Component {
     }
   }
 
-  defaultImg = (e) => {
-    e.target.src = "img/icons/svg/color/_unknown.svg";
-  }
-
-  filterResults(filter) {
-    filter.toLowerCase();
-    var filteredCurrencies = this.state.currencies.filter((coin) => {
-      if (coin.name.toLowerCase().includes(filter) || coin.symbol.toLowerCase().includes(filter) || coin.rank === filter) {
-        return true;
-      } else {
-        return false;
-      }
-    })
-    this.setState({ filteredCurrencies: filteredCurrencies });
-  }
 
 
-  
-  componentWillMount () {
-    this.setState({ filteredCurrencies: this.state.currencies });
+
+  componentWillReceiveProps () {
   }
   
   componentDidMount () {
-    this.getData();
-    this.cryptoUpdate = setInterval(
-      () => this.getData(),
-      60000
-    );
+    // console.log(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ searchTerm: nextProps.searchTerm });
-    this.filterResults(nextProps.searchTerm);
-  }
-
-  
-
-  render() {
+  render () {
     return (
-      <div className="ticker-container">
-        {
-          this.state.filteredCurrencies.slice(0,100).map(coin => 
-            (
-              <div className="ticker" key={ coin.id }>
-                <div className="rank">{ coin.rank }</div>
-                <div className="coin-info">
+      <div className="ticker">
+        <div className="rank">
+          { this.props.rank }
+        </div>
 
-                  <div className="coin-name">
-                    <img src={ "img/icons/svg/color/" + coin.symbol + ".svg" } alt={ coin.name } className="coin-icon" onError={ this.defaultImg } />
-                    <span>{ coin.name }</span>
-                    <small className="sub-text">{ coin.symbol }</small>
-                  </div>
+        <div className="coin-info">
 
-                  <div className="coin-value">
+          <div className="coin-name">
+            <img src={ "img/icons/svg/color/" + this.props.symbol + ".svg" } alt={ this.props.name } className="coin-icon" onError={ this.defaultImg } />
+            <span>{ this.props.name }</span>
+            <small className="sub-text">{ this.props.symbol }</small>
+          </div>
 
-                      <NumberFormat value={coin.price_usd} displayType={'text'} prefix={'$'} isNumericString={true} decimalScale={2} decimalSeparator={','} thousandSeparator={'.'} renderText={value => <span className="coin-price">{value}</span>} />
-                      <NumberFormat value={coin.percent_change_24h} prefix={this.formatPercentage(coin.percent_change_24h)} suffix={'%'} displayType={'text'} isNumericString={true} decimalScale={2} decimalSeparator={','} renderText={value => <span className="coin-price-change">{value}</span>} />
-                      <svg className="price-change-icon" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
-                        {this.chooseIcon(coin.percent_change_24h)}
-                      </svg>
+          <div className="coin-value">
 
-                  </div>
+              <NumberFormat 
+                value={this.props.price_usd} 
+                displayType={'text'} 
+                prefix={'$'} 
+                isNumericString={true} 
+                decimalScale={2} 
+                decimalSeparator={','} 
+                thousandSeparator={'.'} 
+                renderText={value => <span className="coin-price">{value}</span>} 
+              />
 
-                </div>
-              </div>
-            )
-          )
-        }
+              <NumberFormat 
+                value={this.props.percent_change_24h} 
+                prefix={this.formatPercentage(this.props.percent_change_24h)} 
+                suffix={'%'} 
+                displayType={'text'} 
+                isNumericString={true} 
+                decimalScale={2} 
+                decimalSeparator={','} 
+                renderText={value => <span className="coin-price-change">{value}</span>} 
+              />
+
+              <svg className="price-change-icon" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
+                {this.chooseIcon(this.props.percent_change_24h)}
+              </svg>
+
+          </div>
+
+        </div>
       </div>
     )
   }
+  
 }
