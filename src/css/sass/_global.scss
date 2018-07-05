@@ -1,205 +1,215 @@
-@import url('normalize.css');
+@import url("normalize.css");
 @font-face {
-    font-family: "Hind";
-    src: url("fonts/Hind-Regular.ttf");
+  font-family: "Hind";
+  src: url("fonts/Hind-Regular.ttf");
 }
 
 @font-face {
-    font-family: "Hind";
-    src: url("fonts/Hind-Bold.ttf") format('ttf');
-    font-weight: bold;
+  font-family: "Hind";
+  src: url("fonts/Hind-Bold.ttf") format("ttf");
+  font-weight: bold;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body,
 .crypto::before {
-    /* Linear gradient to create a darker background */
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../img/bg-vert.jpg') no-repeat center center fixed;
-    /* 106% needed so blur covers entire screen */
-    background-size: 106% auto;
+  /* Linear gradient to create a darker background */
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("../img/bg-vert.jpg") no-repeat center center fixed;
+  /* 106% needed so blur covers entire screen */
+  background-size: 106% auto;
 }
 
 body {
-    font-family: $ff-main;
-    overflow: hidden;
-    #app {
-        .container {
-            display: grid;
-            grid-template-columns: 50% 50%;
-            .panel {
-                height: 100vh;
-            }
-            .crypto {
-                position: relative;
-                background: rgba(0, 0, 0, 0.3);
-                box-shadow: 8px 0px 30px rgba(0, 0, 0, 0.5);
-                color: $white;
-                font-size: $fs-m;
-                width: 100%;
-                overflow: hidden;
-                grid-column: 1/2;
-                display: grid;
-                grid-template-columns: 10% 10% 70% 10%;
-                grid-template-rows: 24px 40px calc(100vh - 24px - 40px - 84px);
-                grid-row-gap: 28px;
-                &::before {
-                    content: '';
-                    margin: -35px;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    filter: blur(20px);
-                    z-index: -1;
-                }
-                #select-mode {
-                    grid-row: 1/5;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    .mode {
-                        margin: 10px 0;
-                        padding-top: 100%;
-                        height: 50px;
-                        border-radius: 0 5px 5px 0;
-                        position: relative;
-                        cursor: pointer;
-                        &.marketcap {
-                            background: $black url('../img/icons/marketcap.svg') no-repeat center center / 30%;
-                        }
-                        &.watchlist {
-                            background: $black url('../img/icons/binoculars.svg') no-repeat center center / 30%;
-                        }
-                        &.news {
-                            background: $black url('../img/icons/news.svg') no-repeat center center / 30%;
-                        }
-                        .span {
-                        }
-                    }
-                }
-                #market-info {
-                    grid-column: 3/4;
-                    p {
-                        margin: 0;
-                        padding: 10px 0;
-                    }
-                    p > span:first-child {
-                        margin-right: 20px;
-                    }
-                }
-                #search {
-                    grid-column: 3/4;
-                    grid-row: 2/3;
-                    .crypto-search {
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 2px;
-                        border: 0;
-                        padding: 0 35px;
-                        color: $grey-2;
-                        font-size: $fs-m;
-                        font-family: $ff-main;
-                        background: $white url('../img/icons/magnify.svg') no-repeat scroll 7px 7px;
-                        &:focus {
-                            outline: 0;
-                            color: $black;
-                        }
-                    }
-                }
-                #c-root {
-                    grid-column: 3/5;
-                    grid-row: 3/5;
-                    overflow-y: overlay;
-                    .ticker-container {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: space-between;
-                        align-items: stretch;
-                        padding: 0 12.5% 0 0;
-                        &:empty {
-                            content: 'loading...';
-                        }
-                        .ticker {
-                            border: 2px solid $white;
-                            border-radius: 2px;
-                            margin: 0 0 4% 0;
-                            width: 48%;
-                            height: 101px;
-                            overflow: hidden;
-                            display: flex;
-                            .rank {
-                                width: 36px;
-                                height: 100%;
-                                background: $white;
-                                color: $grey-1;
-                                font-weight: bold;
-                                margin-left: -2px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                            }
-                            .coin-info {
-                                width: calc(100% - 25px + 2px);
-                                display: flex;
-                                flex-direction: column;
-                                .coin-name {
-                                    height: 50%;
-                                    padding: 8px;
-                                    display: flex;
-                                    align-items: center;
-                                    background: rgba(255, 255, 255, 0.1);
-                                    .coin-icon {
-                                        width: 32px;
-                                        height: 32px;
-                                        margin-right: 5px;
-                                    }
-                                    p {
-                                        display: inline;
-                                    }
-                                    small {
-                                        margin-left: 5px;
-                                    }
-                                }
-                                .coin-value {
-                                    @extend .coin-name;
-                                    background: none;
-                                    border-bottom: 0;
-                                    .coin-price {
-                                        width: 80%;
-                                    }
-                                    .coin-price-change {
-                                        width: 30%;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .time {
-                color: $white;
-                display: grid;
-                grid-template-columns: 10% 80% 10%;
-                grid-template-rows: 80px auto 40px 40px;
-                grid-column: 2/3;
-                #time {
-                    line-height: 100%;
-                    font-size: 1000%; // text-align: center;
-                    grid-column: 2/3;
-                    grid-row: 2/3;
-                    display: flex;
-                    align-items: center;
-                    padding: 20px;
-                    h1,h2,h3 {
-                        margin: 0;
-                        line-height: 1.15em;
-                    }
-                }
-            }
+  font-family: $ff-main;
+  overflow: hidden;
+  #app {
+    .container {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      .panel {
+        height: 100vh;
+      }
+      .crypto {
+        position: relative;
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: 8px 0px 30px rgba(0, 0, 0, 0.5);
+        color: $white;
+        font-size: $fs-m;
+        width: 100%;
+        overflow: hidden;
+        grid-column: 1/2;
+        display: grid;
+        grid-template-columns: 10% 10% 70% 10%;
+        grid-template-rows: 24px 40px calc(100vh - 24px - 40px - 84px);
+        grid-row-gap: 28px;
+        &::before {
+          content: "";
+          margin: -35px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          filter: blur(20px);
+          z-index: -1;
         }
+        #select-mode {
+          grid-row: 1/5;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .mode {
+            margin: 10px 0;
+            padding-top: 100%;
+            height: 50px;
+            border-radius: 0 5px 5px 0;
+            position: relative;
+            transition: 0.2s ease-out;
+            cursor: pointer;
+            &.marketcap {
+              background: $black url("../img/icons/marketcap.svg") no-repeat
+                center center / 30%;
+            }
+            &.watchlist {
+              background: $black url("../img/icons/binoculars.svg") no-repeat
+                center center / 30%;
+            }
+            &.news {
+              background: $black url("../img/icons/news.svg") no-repeat center
+                center / 30%;
+            }
+            &:hover {
+              background-color: $grey-1;
+              transition: 0.1s ease-out;
+            }
+          }
+        }
+        #market-info {
+          grid-column: 3/4;
+          p {
+            margin: 0;
+            padding: 10px 0;
+          }
+          p > span:first-child {
+            margin-right: 20px;
+          }
+        }
+        #search {
+          grid-column: 3/4;
+          grid-row: 2/3;
+          .crypto-search {
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            border: 0;
+            padding: 0 35px;
+            color: $grey-2;
+            font-size: $fs-m;
+            font-family: $ff-main;
+            background: $white url("../img/icons/magnify.svg") no-repeat scroll
+              7px 7px;
+            &:focus {
+              outline: 0;
+              color: $black;
+            }
+          }
+        }
+        #c-root {
+          grid-column: 3/5;
+          grid-row: 3/5;
+          overflow-y: overlay;
+          .ticker-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 0 12.5% 0 0;
+            &:empty {
+              content: "loading...";
+            }
+            .ticker {
+              border: 2px solid $white;
+              border-radius: 2px;
+              margin: 0 0 4% 0;
+              width: 48%;
+              height: 101px;
+              overflow: hidden;
+              display: flex;
+              .rank {
+                width: 36px;
+                height: 100%;
+                background: $white;
+                color: $grey-1;
+                font-weight: bold;
+                margin-left: -2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              .coin-info {
+                width: calc(100% - 25px + 2px);
+                display: flex;
+                flex-direction: column;
+                .coin-name {
+                  height: 50%;
+                  padding: 8px;
+                  display: flex;
+                  align-items: center;
+                  background: rgba(255, 255, 255, 0.1);
+                  .coin-icon {
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 5px;
+                  }
+                  p {
+                    display: inline;
+                  }
+                  small {
+                    margin-left: 5px;
+                  }
+                }
+                .coin-value {
+                  @extend .coin-name;
+                  background: none;
+                  border-bottom: 0;
+                  .coin-price {
+                    width: 80%;
+                  }
+                  .coin-price-change {
+                    width: 30%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .time {
+        color: $white;
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        grid-template-rows: 80px auto 40px 40px;
+        grid-column: 2/3;
+        #time {
+          line-height: 100%;
+          font-size: 1000%; // text-align: center;
+          grid-column: 2/3;
+          grid-row: 2/3;
+          display: flex;
+          align-items: center;
+          padding: 20px;
+          h1,
+          h2,
+          h3 {
+            margin: 0;
+            line-height: 1.15em;
+          }
+        }
+      }
     }
+  }
 }
