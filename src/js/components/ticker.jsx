@@ -34,12 +34,6 @@ export default class Ticker extends React.Component {
     }
   }
 
-  componentWillReceiveProps() {}
-
-  componentDidMount() {
-    // console.log(this.props);
-  }
-
   render() {
     return (
       <div className="ticker">

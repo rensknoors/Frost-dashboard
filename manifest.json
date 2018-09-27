@@ -7,7 +7,7 @@
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_title": "Click to view Coda dashboard"
+    "default_title": "Click to view Frost dashboard"
   },
   "background": {
     "scripts": ["dist/js/background.js"]
@@ -19,5 +19,6 @@
   ],
   "chrome_url_overrides": {
     "newtab": "dist/newtab.html"
-  }
+  },
+  "web_accessible_resources": ["fonts/*.*", "/fonts/*.*"]
 }

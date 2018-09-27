@@ -1,3 +1,11 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
 h1 {
   font-size: $fs-xxl;
 }
@@ -18,6 +26,10 @@ h5 {
   font-size: $fs-s;
 }
 
+a {
+  text-decoration: none;
+}
+
 small {
   font-size: 70%;
 }
@@ -28,6 +40,14 @@ small {
 
 .sub-text {
   color: $grey-3;
+}
+
+.button {
+  background-color: $white;
+  color: $black;
+  padding: 0.2rem 1rem;
+  border-radius: 40px;
+  text-decoration: none;
 }
 
 ::placeholder {
