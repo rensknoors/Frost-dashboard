@@ -12,28 +12,32 @@ body,
 .crypto::before {
   /* Linear gradient to create a darker background */
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../img/bg-vert.jpg") no-repeat center center fixed;
+    url("/img/bg-vert.jpg") no-repeat center center fixed;
+  // "https://source.unsplash.com/daily?finance"
   /* 106% needed so blur covers entire screen */
-  background-size: 106% auto;
+  background-size: 108% auto;
 }
 
-.ticker-container:empty,
-.articles:empty {
-  position: absolute;
-  top: calc(50% - 80px + 6.25%);
-  left: calc(50% - 80px + 6.25%);
-  width: 160px;
-  height: 160px;
-  border: 1.1em solid rgba(0, 0, 0, 0.2);
-  border-left: 1.1em solid #000000;
-  border-radius: 50%;
-  box-sizing: border-box;
-  padding: 0 !important;
-  margin: 0 !important;
-  animation: load8 1.1s infinite linear;
+#c-root,
+.ticker-container,
+.articles {
+  &:empty {
+    position: absolute;
+    top: calc(50% - 80px + 6.25%);
+    left: calc(50% - 80px + 6.25%);
+    width: 160px;
+    height: 160px;
+    border: 1.1em solid rgba($white, 0.2);
+    border-left: 1.1em solid $white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 0 !important;
+    margin: 0 !important;
+    animation: load 1.1s infinite linear;
+  }
 }
 
-@keyframes load8 {
+@keyframes load {
   0% {
     transform: rotate(0deg);
   }

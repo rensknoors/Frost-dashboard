@@ -59,7 +59,15 @@ class App extends React.Component {
               <SearchBar onSearchCrypto={this.filterCryto} />
             ) : null}
             {this.state.cRootContent == "news" ? (
-              <h3>Latest Crypto News</h3>
+              <div>
+                <h3>Latest Crypto News</h3>
+                <small className="article-credits sub-text">
+                  Powered by{" "}
+                  <a href="https://newsapi.org/" target="_blank">
+                    News API
+                  </a>
+                </small>
+              </div>
             ) : null}
           </div>
 

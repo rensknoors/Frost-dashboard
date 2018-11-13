@@ -22,7 +22,6 @@ export default class CoinList extends React.Component {
       if (this.state.filteredCurrencies.length === 0) {
         this.setState({ filteredCurrencies: currencies });
       }
-      console.log(currencies);
     });
   }
 

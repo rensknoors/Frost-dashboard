@@ -49,12 +49,6 @@ export default class News extends React.Component {
             );
           })}
         </div>
-        <small className="article-credits sub-text">
-          Powered by{" "}
-          <a href="https://newsapi.org/" target="_blank">
-            News API
-          </a>
-        </small>
       </div>
     );
   }

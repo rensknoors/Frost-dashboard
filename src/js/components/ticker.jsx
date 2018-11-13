@@ -10,6 +10,10 @@ export default class Ticker extends React.Component {
     e.target.src = "img/icons/svg/color/_unknown.svg";
   };
 
+  checkImg(path) {
+    return path;
+  }
+
   formatPercentage(percentage) {
     if (percentage >= 0) {
       return "+";
@@ -42,7 +46,9 @@ export default class Ticker extends React.Component {
         <div className="coin-info">
           <div className="coin-name">
             <img
-              src={"img/icons/svg/color/" + this.props.symbol + ".svg"}
+              src={this.checkImg(
+                "img/icons/svg/color/" + this.props.symbol + ".svg"
+              )}
               alt={this.props.name}
               className="coin-icon"
               onError={this.defaultImg}

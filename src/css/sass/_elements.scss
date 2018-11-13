@@ -40,6 +40,9 @@ small {
 
 .sub-text {
   color: $grey-3;
+  a {
+    color: $white;
+  }
 }
 
 .button {
